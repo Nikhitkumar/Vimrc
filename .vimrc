@@ -1,6 +1,4 @@
 syntax on
-
-
 set noerrorbells
 set vb t_vb=
 set tabstop=4 softtabstop=4
@@ -28,14 +26,18 @@ Plug 'Yggdroot/indentLine'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/vimshell.vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
-let mapleader=","
 
 colorscheme gruvbox
 set background=dark
+let g:airline_theme='angr'
 
 set cursorline
 hi cursorline cterm=none term=none
@@ -54,8 +56,6 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
-nmap <C-n> :NERDTreeToggle<CR>
-
 filetype plugin on
 filetype plugin indent on
 
@@ -63,13 +63,33 @@ filetype plugin indent on
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:indentLine_char = '⦙'
 
-
 " YAML Fold level
 set foldlevelstart=20
 
 
 let g:AutoClosePreserveDotReg = 0
 
+"Nerd tree toggle
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <Leader>n :NERDTreeToggle <Esc>
 
-map <C-_>   <Plug>NERDCommenterToggle 
-vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+"Comment
+map <Leader>c   <Plug>NERDCommenterToggle 
+vmap <Leader>c   <Plug>NERDCommenterToggle<CR>gv
+
+"Switch Panes
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+
+"Splt 
+nnoremap <Leader>\ :vsplit <Esc>
+nnoremap <Leader>- :split <Esc>
+
+"* PRIMARY and + CLIPBOARD
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p""
+set t_ut=
